@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="rootPane" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.crudapp.Controllers.StartWindow">
+   <children>
+      <Button fx:id="buttonWorker" focusTraversable="false" layoutX="363.0" layoutY="180.0" mnemonicParsing="false" text="Сотрудник" />
+      <Button fx:id="buttonEntrant" focusTraversable="false" layoutX="360.0" layoutY="297.0" mnemonicParsing="false" text="Абитуриент" />
+      <Label layoutX="247.0" layoutY="65.0" text="Выберите способ входа">
+         <font>
+            <Font name="Comic Sans MS Bold" size="26.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>
