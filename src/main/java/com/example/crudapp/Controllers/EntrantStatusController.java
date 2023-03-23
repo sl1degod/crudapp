@@ -46,7 +46,6 @@ public class EntrantStatusController {
         columnSpec.setCellValueFactory(new PropertyValueFactory<>("spec"));
         columnForEduc.setCellValueFactory(new PropertyValueFactory<>("formeduc"));
         columnStatus.setCellValueFactory(new PropertyValueFactory<>("status"));
-        String id = Singleton.getInstance().getId();
         tableView.setItems(dbFunctions.getAllEntrant());
     }
 

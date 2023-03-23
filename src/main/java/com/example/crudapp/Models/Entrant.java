@@ -3,7 +3,7 @@ package com.example.crudapp.Models;
 public class Entrant {
     String id, spec, formeduc, status;
 
-    public Entrant(String id, String status, String formeduc, String spec) {
+    public Entrant(String id, String formeduc, String spec,  String status) {
         this.id = id;
         this.spec = spec;
         this.formeduc = formeduc;

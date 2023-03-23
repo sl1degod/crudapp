@@ -90,35 +90,14 @@ public class DbFunctions {
         return 201;
     }
 
-    public void update_status(String status, String login) {
+
+
+    public void updateDataUser(String status, String id, String spec) {
         try {
-            String query = String.format("update users set status = '%s' where login = '%s'", status, login);
+            String query = String.format("update form set status='%s' where abitid='%s' and spec = '%s'", status, id, spec);
             Statement statement = connect_to_db().createStatement();
             statement.executeUpdate(query);
             System.out.println("Data updated");
-        } catch (SQLException e) {
-            System.out.println(e.getMessage());
-        }
-    }
-
-
-
-    public void updateDataUser(String login, String password, String role, String id) {
-        try {
-            String query = String.format("update users set login='%s', password='%s', role='%s', status='Офлайн' where id='%s'", login, password, role, id);
-            Statement statement = connect_to_db().createStatement();
-            statement.executeUpdate(query);
-            System.out.println("Data updated");
-        } catch (SQLException e) {
-            System.out.println(e.getMessage());
-        }
-
-    }
-
-    public void deleteDataUser(String id) {
-        try {
-            String query = String.format("delete from users where id='%s'",id);
-            connect_to_db().createStatement().executeUpdate(query);
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
@@ -180,7 +159,20 @@ public class DbFunctions {
     }
 
 
-
+//try {
+//            String query = String.format("select form.id, abiturient.name, abiturient.surname, abiturient.patronymic, form.spec, form.formeduc from abiturient, form where form.abitid = abiturient.id and form.abitid ='%s'", id);
+//            Statement statement = dbFunctions.connect_to_db().createStatement();
+//            ResultSet resultSet = statement.executeQuery(query);
+//            if (resultSet.next()) {
+//                labelSurname.setText(resultSet.getString("abiturient.surname"));
+//                labelName.setText(resultSet.getString("abiturient.name"));
+//                labelPatronymic.setText(resultSet.getString("abiturient.patronymic"));
+//                labelSpec.setText(resultSet.getString("form.spec"));
+//                labelFormEduc.setText(resultSet.getString("form.formeduc"));
+//            }
+//        } catch(SQLException e) {
+//            System.out.println(e.getMessage());
+//        }
 
 
 

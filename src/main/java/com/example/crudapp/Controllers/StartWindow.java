@@ -24,7 +24,7 @@ public class StartWindow {
         });
 
         buttonWorker.setOnAction(e -> {
-            new Loader().openNewScene(rootPane, "/com/example/crudapp/views/worker-auth.fxml", "Сотрудник");
+            new Loader().openNewScene(rootPane, "/com/example/crudapp/views/worker-main-window.fxml", "Сотрудник");
         });
     }
 
