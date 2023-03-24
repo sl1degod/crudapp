@@ -5,24 +5,39 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-
-<AnchorPane prefHeight="400.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.crudapp.Controllers.EntrantUpdateController">
+<AnchorPane prefHeight="400.0" prefWidth="500.0" style="-fx-background-color: aliceblue;" stylesheets="@../../../../styles.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.crudapp.Controllers.EntrantUpdateController">
    <children>
-      <Label layoutX="169.0" layoutY="50.0" text="Редактирование абитуриента" />
+      <Label layoutX="119.0" layoutY="46.0" text="Редактирование абитуриента" textFill="#100068">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font></Label>
       <Button fx:id="buttonSave" focusTraversable="false" layoutX="213.0" layoutY="323.0" mnemonicParsing="false" text="Сохранить" />
       <Label fx:id="ErrorLabel" layoutX="178.0" layoutY="265.0" prefHeight="34.0" prefWidth="145.0" textAlignment="CENTER" textFill="RED" />
       <TextField fx:id="textFieldStatus" layoutX="164.0" layoutY="253.0" prefWidth="174.0" promptText="Статус" />
-      <VBox layoutX="123.0" layoutY="146.0" prefHeight="66.0" prefWidth="100.0" spacing="20.0">
+      <VBox layoutX="86.0" layoutY="143.0" prefHeight="66.0" prefWidth="127.0" spacing="20.0">
          <children>
-            <Label text="Специальность" />
-            <Label text="Форма обучения" />
+            <Label text="Специальность">
+               <font>
+                  <Font name="Comic Sans MS" size="13.0" />
+               </font></Label>
+            <Label text="Форма обучения">
+               <font>
+                  <Font name="Comic Sans MS" size="13.0" />
+               </font></Label>
          </children>
       </VBox>
       <VBox layoutX="251.0" layoutY="146.0" prefHeight="60.0" prefWidth="226.0" spacing="20.0">
          <children>
-            <Label fx:id="labelSpec" prefHeight="17.0" prefWidth="227.0" textAlignment="CENTER" wrapText="true" />
-            <Label fx:id="labelFormEduc" prefHeight="17.0" prefWidth="127.0" />
+            <Label fx:id="labelSpec" prefHeight="17.0" prefWidth="227.0" textAlignment="CENTER" wrapText="true">
+               <font>
+                  <Font name="Comic Sans MS" size="13.0" />
+               </font></Label>
+            <Label fx:id="labelFormEduc" prefHeight="19.0" prefWidth="228.0">
+               <font>
+                  <Font name="Comic Sans MS" size="13.0" />
+               </font></Label>
          </children>
       </VBox>
    </children>

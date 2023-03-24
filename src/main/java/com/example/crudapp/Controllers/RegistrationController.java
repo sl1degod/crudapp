@@ -67,7 +67,7 @@ public class RegistrationController {
     private TextField textFieldName;
 
     @FXML
-    private TextField textFieldPhone;
+    private MaskField textFieldPhone;
 
     @FXML
     private TextField textFieldSecondName;
@@ -155,9 +155,9 @@ public class RegistrationController {
             labelError.setText("Введите пароль");
         }
 
-//        else if (!password.matches("(?=.*[A-Z])(?=.*[a-z])(?=.*\\d)[A-Za-z\\d]{6,}")) {
-//            labelError.setText("Ваш пароль не соответствует требованиям");
-//        }
+        else if (!password.matches("(?=.*[A-Z])(?=.*[a-z])(?=.*\\d)[A-Za-z\\d]{6,}")) {
+            labelError.setText("Ваш пароль не соответствует требованиям");
+        }
 
         else if (textFieldCaptcha.getText().isEmpty()) {
             labelError.setText("Введите каптчу");
@@ -173,7 +173,6 @@ public class RegistrationController {
             Singleton.getInstance().setCity(textFieldCity.getText());
             Singleton.getInstance().setPhone(textFieldPhone.getText());
             Singleton.getInstance().setAvgScore(textFieldScore.getText());
-
             dbFunctions.createEntrant(surname, name, patronymic, dateBirthday, phone, city, avgScore, image, login, password);
             new Loader().openNewScene(rootPane, "/com/example/crudapp/views/entrant-auth.fxml", "Авторизация");
         }

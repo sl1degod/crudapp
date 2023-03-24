@@ -68,10 +68,13 @@ public class WorkerAuthController {
         } else if(codeError == 404) {
             labelError.setText("Какая-то ошибка");
             checkCaptcha();
-        } else {
+        }
+        else if (!textFieldCaptcha.getText().equals(captcha.getText())) {
+            labelError.setText("Введите каптчу");
+        }
+        else {
             labelError.setText("");
             new Loader().openNewScene(rootPane, "/com/example/crudapp/views/worker-main-window.fxml", "Главное меню");
-
         }
 
 

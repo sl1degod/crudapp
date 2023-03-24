@@ -5,10 +5,9 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
-<AnchorPane fx:id="rootPane" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.crudapp.Controllers.EntrantStatusController">
+<AnchorPane fx:id="rootPane" prefHeight="600.0" prefWidth="800.0" stylesheets="@../../../../styles.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.crudapp.Controllers.EntrantStatusController">
    <children>
-      <TableView fx:id="tableView" prefHeight="443.0" prefWidth="800.0">
+      <TableView fx:id="tableView" prefHeight="443.0" prefWidth="800.0" style="-fx-background-color: aliceblue;">
         <columns>
           <TableColumn fx:id="columnId" prefWidth="91.0" text="ID" />
             <TableColumn fx:id="columnSpec" prefWidth="365.0" text="Специальность" />
@@ -16,6 +15,6 @@
             <TableColumn fx:id="columnStatus" prefWidth="215.0" text="Статус" />
         </columns>
       </TableView>
-      <Button fx:id="buttonBack" layoutX="264.0" layoutY="497.0" mnemonicParsing="false" text="Назад" />
+      <Button fx:id="buttonBack" layoutX="366.0" layoutY="497.0" mnemonicParsing="false" text="Назад" />
    </children>
 </AnchorPane>

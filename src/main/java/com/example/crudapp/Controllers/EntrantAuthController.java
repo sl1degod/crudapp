@@ -78,7 +78,10 @@ public class EntrantAuthController {
         } else if(codeError == 404) {
             labelError.setText("Какая-то ошибка");
             checkCaptcha();
-        } else {
+        } else if (!textFieldCaptcha.getText().equals(captcha.getText())) {
+            labelError.setText("Введите каптчу");
+        }
+        else {
             Singleton.getInstance().setLogin(textFieldLogin.getText());
             labelError.setText("");
             new Loader().openNewScene(rootPane, "/com/example/crudapp/views/main-entrant-window.fxml", "Главное меню");

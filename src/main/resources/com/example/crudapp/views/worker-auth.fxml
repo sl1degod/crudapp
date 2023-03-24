@@ -4,19 +4,38 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="rootPane" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.crudapp.Controllers.WorkerAuthController">
+<AnchorPane fx:id="rootPane" prefHeight="600.0" prefWidth="800.0" stylesheets="@../../../../styles.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.crudapp.Controllers.WorkerAuthController">
    <children>
       <TextField fx:id="textFieldLogin" layoutX="334.0" layoutY="151.0" />
       <TextField fx:id="textFieldPassword" layoutX="334.0" layoutY="232.0" />
       <TextField fx:id="textFieldCaptcha" layoutX="334.0" layoutY="318.0" />
-      <Label layoutX="387.0" layoutY="64.0" text="Авторизация" />
-      <Label layoutX="274.0" layoutY="155.0" text="Логин" />
-      <Label layoutX="274.0" layoutY="236.0" text="Пароль" />
-      <Label layoutX="274.0" layoutY="322.0" text="Каптча" />
-      <Label fx:id="captcha" alignment="CENTER" layoutX="513.0" layoutY="311.0" prefHeight="39.0" prefWidth="82.0" textAlignment="CENTER" />
+      <Label layoutX="325.0" layoutY="62.0" text="Авторизация" textFill="#100068">
+         <font>
+            <Font name="Comic Sans MS Bold" size="24.0" />
+         </font></Label>
+      <Label layoutX="269.0" layoutY="152.0" text="Логин">
+         <font>
+            <Font name="Comic Sans MS" size="16.0" />
+         </font></Label>
+      <Label layoutX="263.0" layoutY="233.0" text="Пароль">
+         <font>
+            <Font name="Comic Sans MS" size="16.0" />
+         </font></Label>
+      <Label layoutX="267.0" layoutY="318.0" text="Каптча">
+         <font>
+            <Font size="16.0" />
+         </font></Label>
+      <Label fx:id="captcha" alignment="CENTER" layoutX="513.0" layoutY="311.0" prefHeight="39.0" prefWidth="115.0" textAlignment="CENTER">
+         <font>
+            <Font size="15.0" />
+         </font></Label>
       <Button fx:id="buttonSignIn" layoutX="409.0" layoutY="459.0" mnemonicParsing="false" text="Войти" />
-      <Label fx:id="labelError" layoutX="324.0" layoutY="376.0" prefHeight="59.0" prefWidth="169.0" textAlignment="CENTER" wrapText="true" />
+      <Label fx:id="labelError" layoutX="335.0" layoutY="376.0" prefHeight="35.0" prefWidth="149.0" textAlignment="CENTER" textFill="RED" wrapText="true">
+         <font>
+            <Font size="15.0" />
+         </font></Label>
       <Button fx:id="buttonBack" layoutX="324.0" layoutY="459.0" mnemonicParsing="false" text="Назад" />
    </children>
 
