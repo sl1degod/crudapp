@@ -14,10 +14,7 @@ import com.example.crudapp.Loader;
 import com.example.crudapp.MaskField;
 import com.example.crudapp.Models.Singleton;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
@@ -67,7 +64,7 @@ public class RegistrationController {
     private TextField textFieldName;
 
     @FXML
-    private TextField textFieldPhone;
+    private MaskField textFieldPhone;
 
     @FXML
     private TextField textFieldSecondName;
@@ -76,16 +73,13 @@ public class RegistrationController {
     private TextField textFieldThirdName;
 
     @FXML
-    private TextField textFieldScore;
+    private MaskField textFieldScore;
 
     @FXML
     private TextField textFieldLogin;
 
     @FXML
     private TextField textFieldPassword;
-
-    @FXML
-    private ImageView arrowLeft;
 
     Stage stage = new Stage();
     FileChooser fileChooser = new FileChooser();
@@ -99,14 +93,20 @@ public class RegistrationController {
     @FXML
     void initialize() {
         checkCaptcha();
+        textFieldScore.setTooltip(new Tooltip("Введите средний балл аттестата"));
         buttonBack.setOnAction(e -> {
-            new Loader().openNewScene(rootPane, "/com/example/crudapp/views/entrant-start-window.fxml", "Абитуриент");
+            new Loader().openNewScene(rootPane, "/com/example/crudapp/views/entrant-auth.fxml", "Абитуриент");
         });
         buttonSetPhoto.setOnAction(e -> {
-            File file = fileChooser.showOpenDialog(stage);
-            image = file.getAbsolutePath();
-            imageEn.setImage(new Image(image));
-            System.out.println("123");
+            try {
+                File file = fileChooser.showOpenDialog(stage);
+                image = file.getAbsolutePath();
+                imageEn.setImage(new Image(image));
+                System.out.println("123");
+            } catch (Exception ex) {
+                System.out.println(ex.getMessage());
+            }
+
         });
         buttonRegistration.setOnAction(e -> {
             validation();
@@ -124,44 +124,79 @@ public class RegistrationController {
         String login = textFieldLogin.getText();
         String password = textFieldPassword.getText();
         String avgScore = textFieldScore.getText();
+        int codeError = dbFunctions.check_login(login);
+
+
+
+
 
         labelError.setText("");
 
         if(surname.isEmpty()){
+            checkCaptcha();
             labelError.setText("Введите фамилию");
         }
 
         else if (name.isEmpty()) {
+            checkCaptcha();
             labelError.setText("Введите имя");
         }
 
         else if (patronymic.isEmpty()) {
+            checkCaptcha();
             labelError.setText("Введите Отчество");
         }
 
-        else if (phone.isEmpty()) {
+        else if (phone.equals("+7(___)___-____")) {
+            checkCaptcha();
             labelError.setText("Введите номер телефона");
         }
 
+        else if (dateBirthday == null) {
+            checkCaptcha();
+            labelError.setText("Введите дату рождения");
+        }
+
+        else if (image.isEmpty()) {
+            checkCaptcha();
+            labelError.setText("Выберите фото");
+        }
+
         else if (city.isEmpty()) {
+            checkCaptcha();
             labelError.setText("Введите город");
         }
 
+        else if (avgScore.equals("_.__")) {
+            checkCaptcha();
+            labelError.setText("Введите балл");
+        }
+
         else if (login.isEmpty()) {
+            checkCaptcha();
             labelError.setText("Введите логин");
         }
 
+        else if (codeError == 0) {
+            checkCaptcha();
+            labelError.setText("Такой логин уже существует");
+        }
+
         else if (password.isEmpty()) {
+            checkCaptcha();
             labelError.setText("Введите пароль");
         }
 
-//        else if (!password.matches("(?=.*[A-Z])(?=.*[a-z])(?=.*\\d)[A-Za-z\\d]{6,}")) {
-//            labelError.setText("Ваш пароль не соответствует требованиям");
-//        }
+        else if (!password.matches("(?=.*[A-Z])(?=.*[a-z])(?=.*\\d)[A-Za-z\\d]{6,}")) {
+            checkCaptcha();
+            labelError.setText("Ваш пароль не соответствует требованиям (минимум 6 символом, в которых содержится минимум 1 заглавная буква и минимум 1 цифра");
+        }
 
         else if (textFieldCaptcha.getText().isEmpty()) {
+            checkCaptcha();
             labelError.setText("Введите каптчу");
         } else if (!textFieldCaptcha.getText().equals(captcha.getText())) {
+            checkCaptcha();
             labelError.setText("Введите каптчу верно");
         }
         else {
@@ -173,23 +208,10 @@ public class RegistrationController {
             Singleton.getInstance().setCity(textFieldCity.getText());
             Singleton.getInstance().setPhone(textFieldPhone.getText());
             Singleton.getInstance().setAvgScore(textFieldScore.getText());
-
             dbFunctions.createEntrant(surname, name, patronymic, dateBirthday, phone, city, avgScore, image, login, password);
             new Loader().openNewScene(rootPane, "/com/example/crudapp/views/entrant-auth.fxml", "Авторизация");
         }
     }
-
-
-    private void installDatePicker() {
-        int year = Integer.parseInt(new SimpleDateFormat("yyyy").format(new Date()));
-        int month = Integer.parseInt(new SimpleDateFormat("MM").format(new Date()));
-        int day = Integer.parseInt(new SimpleDateFormat("dd").format(new Date()));
-        datePicker.setValue(LocalDate.of(year,month,day));
-        datePicker.setPromptText("dd-MM-yyyy");
-
-
-    }
-
 
     public void checkCaptcha() {
         captcha.setText(generateCaptcha());

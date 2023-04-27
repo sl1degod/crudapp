@@ -1,3 +1,132 @@
-#anchorPane {
-    -fx-background-color: linear-gradient(to bottom, #ef7800, #580098);
+#rootPane {
+    -fx-background-color: white;
 }
+
+#labelReg {
+    -fx-text-fill: #403866;
+    -fx-font-family: Serif;
+}
+
+#labelNotAcc {
+    -fx-text-fill: #827ffe;
+    -fx-font-family: Serif;
+}
+
+#captcha {
+    -fx-font-family: Serif;
+    -fx-font-size: 18px;
+}
+
+.label {
+    -fx-text-fill: #404040;
+    -fx-font-family: Serif;
+
+}
+
+#labelError {
+    -fx-text-fill: red;
+    -fx-font-size: 14px;
+}
+
+
+.button {
+    -fx-background-color: #827ffe;
+    -fx-font-family: Serif;
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-text-fill: white;
+}
+
+.button:hover {
+    -fx-background-color: #403866;
+}
+
+.text-field {
+    -fx-background-color: #ECECEC;
+    -fx-font-family: Serif;
+    -fx-font-size: 18px;
+    -fx-text-fill: #403866;
+    -fx-prompt-text-fill: gray;
+}
+
+.text-field:focused {
+    -fx-border-color: #827ffe;
+}
+
+.choice-box {
+    -fx-mark-color: white;
+}
+
+.choice-box .menu-item {
+    -fx-background-color: #827ffe;
+}
+
+.choice-box .label {
+    -fx-text-fill: white;
+    -fx-font-size: 16px;
+    -fx-font-family: Serif;
+}
+
+#choiceBoxSpec,  #choiceBoxStatus{
+    -fx-background-color: #827ffe;
+}
+
+#choiceBoxCheckStatus {
+    -fx-background-color: #827ffe;
+}
+
+#choiceBoxFormEduc {
+    -fx-background-color: #827ffe;
+}
+
+.choice-box .menu-item:hover {
+    -fx-background-color: #403866;
+}
+
+.chart-pie-label {
+    -fx-fill: black;
+    -fx-font-size : 16px;
+}
+
+.chart-title {
+    -fx-fill: black;
+    -fx-font-size : 20px;
+}
+
+.chart-legend {
+    -fx-font-size : 28px;
+    -fx-fill: black;
+    -fx-font-family: Serif;
+}
+
+.table-view {
+    -fx-background-color: transparent;
+}
+.table-view .column-header-background .filler {
+    -fx-background-color: transparent;
+}
+.table-view .corner {
+    -fx-background-color: transparent;
+}
+.table-view .column-header-background{
+    -fx-background-color: #827ffe;
+    -fx-tick-label-fill: white;
+}
+
+.table-view .label{
+    -fx-font-size : 16px;
+    -fx-text-fill: white;
+}
+
+.table-view .column-header {
+    -fx-background-color: transparent;
+}
+
+.table-view .table-cell{
+    -fx-border-color: transparent;
+    -fx-padding: 2 0 2 10px;
+}
+
+
+
+

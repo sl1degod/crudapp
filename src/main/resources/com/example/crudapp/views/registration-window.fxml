@@ -7,51 +7,59 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<!--<?import com.example.crudapp.MaskField?>-->
+<?import com.example.crudapp.MaskField?>
 
-<AnchorPane fx:id="rootPane" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.crudapp.Controllers.RegistrationController">
-   <children>
-    <AnchorPane layoutY="7.0" minHeight="0.0" minWidth="0.0" prefHeight="600.0" prefWidth="800.0">
-         <children>
-            <Label layoutX="366.0" layoutY="25.0" text="Регистрация" />
-            <Label layoutX="103.0" layoutY="71.0" text="Фамилия" />
-            <Label layoutX="125.0" layoutY="113.0" text="Имя" />
-            <Label layoutX="112.0" layoutY="157.0" text="Отчество" />
-            <Label layoutX="83.0" layoutY="255.0" text="Дата рождения" />
-            <Label layoutX="79.0" layoutY="199.0" text="Номер телефона" />
-            <Label layoutX="444.0" layoutY="71.0" text="Город" />
-            <Button fx:id="buttonRegistration" focusTraversable="false" layoutX="615.0" layoutY="343.0" mnemonicParsing="false" text="Зарегистрироваться" />
-            <Label layoutX="412.0" layoutY="247.0" text="Введите капчу" />
-            <Label fx:id="captcha" layoutX="679.0" layoutY="243.0" prefHeight="25.0" prefWidth="107.0" />
-            <Label fx:id="labelError" alignment="CENTER" layoutX="452.0" layoutY="270.0" prefHeight="67.0" prefWidth="291.0" textFill="RED" wrapText="true" />
-            <Label layoutX="444.0" layoutY="157.0" text="Логин" />
-            <Label layoutX="444.0" layoutY="199.0" text="Пароль" />
-            <ImageView fx:id="imageEn" fitHeight="180.0" fitWidth="181.0" layoutX="95.0" layoutY="355.0" pickOnBounds="true" preserveRatio="true" />
-            <Label layoutX="103.0" layoutY="307.0" text="Фото" />
-            <Button fx:id="buttonSetPhoto" focusTraversable="false" layoutX="220.0" layoutY="303.0" mnemonicParsing="false" text="Выбрать фото" />
-            <VBox layoutX="185.0" layoutY="65.0" prefHeight="216.0" prefWidth="163.0" spacing="20.0">
-               <children>
-                  <TextField fx:id="textFieldSecondName" />
-                  <TextField fx:id="textFieldName" />
-                  <TextField fx:id="textFieldThirdName" />
-                  <TextField fx:id="textFieldPhone" />
-                  <!--                        <MaskField mask="+7(DDD)DDD-DDDD" fx:id="textFieldPhone" />-->
-                  <DatePicker fx:id="datePicker" />
-               </children>
-            </VBox>
-            <VBox layoutX="516.0" layoutY="65.0" prefHeight="171.0" prefWidth="163.0" spacing="20.0">
-               <children>
-                  <TextField fx:id="textFieldCity" />
-                  <TextField fx:id="textFieldScore" />
-                  <TextField fx:id="textFieldLogin" />
-                  <TextField fx:id="textFieldPassword" />
-               </children>
-            </VBox>
-            <Button fx:id="buttonBack" focusTraversable="false" layoutX="516.0" layoutY="343.0" mnemonicParsing="false" text="Назад" />
-            <Label layoutX="379.0" layoutY="113.0" text="Средний балл аттестата" />
-            <TextField fx:id="textFieldCaptcha" layoutX="516.0" layoutY="243.0" />
-         </children>
-      </AnchorPane>
-   </children>
+<AnchorPane fx:id="rootPane" prefHeight="500.0" prefWidth="800.0" stylesheets="@../../../../styles.css"
+            xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.example.crudapp.Controllers.RegistrationController">
+    <children>
+        <AnchorPane layoutX="-7.0" layoutY="-1.0" minHeight="0.0" minWidth="0.0" prefHeight="505.0" prefWidth="808.0">
+            <children>
+                <Label layoutX="351.0" layoutY="20.0" text="Регистрация" textFill="#100068">
+                    <font>
+                        <Font name="Comic Sans MS Bold" size="24.0"/>
+                    </font>
+                </Label>
+                <Button fx:id="buttonRegistration" focusTraversable="false" layoutX="500.0" layoutY="400.0"
+                        mnemonicParsing="false" text="Зарегистрироваться"/>
+                <Label fx:id="captcha" layoutX="700.0" layoutY="307.0" prefHeight="25.0" prefWidth="93.0">
+                    <font>
+                        <Font size="15.0"/>
+                    </font>
+                </Label>
+                <Label fx:id="labelError" alignment="CENTER" layoutX="458.0" layoutY="328.0" prefHeight="67.0"
+                       prefWidth="291.0" textFill="RED" wrapText="true">
+                    <font>
+                        <Font size="18.0"/>
+                    </font>
+                </Label>
+                <ImageView fx:id="imageEn" fitHeight="180.0" fitWidth="181.0" layoutX="45.0" layoutY="110.0"
+                           pickOnBounds="true" preserveRatio="true"/>
+                <Button fx:id="buttonSetPhoto" focusTraversable="false" layoutX="74.0" layoutY="339.0"
+                        mnemonicParsing="false" text="Выбрать фото"/>
+                <VBox layoutX="276.0" layoutY="96.0" prefHeight="216.0" prefWidth="163.0" spacing="20.0">
+                    <children>
+                        <TextField fx:id="textFieldSecondName" promptText="Фамилия"/>
+                        <TextField fx:id="textFieldName" promptText="Имя"/>
+                        <TextField fx:id="textFieldThirdName" promptText="Отчество"/>
+                        <MaskField mask="+7(DDD)DDD-DDDD" fx:id="textFieldPhone" promptText="Каптча"/>
+                        <DatePicker fx:id="datePicker" editable="false" promptText="Дата рождения"/>
+                    </children>
+                </VBox>
+                <VBox layoutX="516.0" layoutY="96.0" prefHeight="171.0" prefWidth="163.0" spacing="20.0">
+                    <children>
+                        <TextField fx:id="textFieldCity" promptText="Город"/>
+                        <MaskField fx:id="textFieldScore" mask="D.DD"/>
+                        <TextField fx:id="textFieldLogin" promptText="Логин"/>
+                        <TextField fx:id="textFieldPassword" promptText="Пароль"/>
+                        <TextField fx:id="textFieldCaptcha" promptText="Каптча" prefHeight="25.0" prefWidth="163.0" />
+                    </children>
+                </VBox>
+                <Button fx:id="buttonBack" focusTraversable="false" layoutX="400.0" layoutY="401.0"
+                        mnemonicParsing="false" text="Назад"/>
+            </children>
+        </AnchorPane>
+    </children>
 </AnchorPane>

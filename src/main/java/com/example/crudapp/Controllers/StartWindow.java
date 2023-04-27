@@ -3,10 +3,10 @@ package com.example.crudapp.Controllers;
 import com.example.crudapp.Loader;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 
 public class StartWindow {
-
 
     @FXML
     private Button buttonEntrant;
@@ -15,16 +15,19 @@ public class StartWindow {
     private Button buttonWorker;
 
     @FXML
+    private ImageView image;
+
+    @FXML
     private AnchorPane rootPane;
 
     @FXML
     void initialize() {
         buttonEntrant.setOnAction(e -> {
-            new Loader().openNewScene(rootPane, "/com/example/crudapp/views/entrant-start-window.fxml", "Абитуриент");
+            new Loader().openNewScene(rootPane, "/com/example/crudapp/views/entrant-auth.fxml", "Абитуриент");
         });
 
         buttonWorker.setOnAction(e -> {
-            new Loader().openNewScene(rootPane, "/com/example/crudapp/views/worker-main-window.fxml", "Сотрудник");
+            new Loader().openNewScene(rootPane, "/com/example/crudapp/views/worker-auth.fxml", "Сотрудник");
         });
     }
 

@@ -1,13 +1,16 @@
 package com.example.crudapp.Models;
 
 public class Entrant {
-    String id, spec, formeduc, status;
+    String id, fio, spec, formeduc, status, avg, formid;
 
-    public Entrant(String id, String formeduc, String spec,  String status) {
+    public Entrant(String id, String fio, String formeduc, String spec,  String status, String avg, String formid) {
         this.id = id;
+        this.fio = fio;
         this.spec = spec;
         this.formeduc = formeduc;
         this.status = status;
+        this.avg = avg;
+        this.formid = formid;
     }
 
     public String getId() {
@@ -16,6 +19,14 @@ public class Entrant {
 
     public void setId(String id) {
         this.id = id;
+    }
+
+    public String getFio() {
+        return fio;
+    }
+
+    public void setFio(String fio) {
+        this.fio = fio;
     }
 
     public String getSpec() {
@@ -42,5 +53,19 @@ public class Entrant {
         this.status = status;
     }
 
+    public String getAvg() {
+        return avg;
+    }
 
+    public void setAvg(String avg) {
+        this.avg = avg;
+    }
+
+    public String getFormid() {
+        return formid;
+    }
+
+    public void setFormid(String formid) {
+        this.formid = formid;
+    }
 }

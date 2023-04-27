@@ -43,6 +43,9 @@ public class EntrantProfileController {
     @FXML
     private Label labelPhone;
 
+    @FXML
+    private Label labelExit;
+
     DbFunctions dbFunctions = new DbFunctions();
 
     @FXML
@@ -50,6 +53,10 @@ public class EntrantProfileController {
         info();
         buttonBack.setOnAction(e -> {
             new Loader().openNewScene(rootPane, "/com/example/crudapp/views/main-entrant-window.fxml", "Главное окно");
+        });
+
+        labelExit.setOnMouseClicked(e -> {
+            new Loader().openNewScene(rootPane, "/com/example/crudapp/views/start-window.fxml", "Начальный экран");
         });
     }
 

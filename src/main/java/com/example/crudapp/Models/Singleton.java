@@ -3,23 +3,20 @@ package com.example.crudapp.Models;
 public class Singleton {
     private static Singleton instance;
     private String login;
-
     private String surname;
     private String name;
     private String patronymic;
-
     private String dateBirthday;
     private String phone;
     private String city;
-
     private String image;
-
     private String avgScore;
-
     private String formEduc;
-
     private String spec;
-
+    private String status;
+    private String chooseStatus;
+    private String abitId;
+    private String formId;
     private String id;
 
     public static synchronized Singleton getInstance() {
@@ -119,6 +116,38 @@ public class Singleton {
 
     public void setSpec(String spec) {
         this.spec = spec;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public String getChooseStatus() {
+        return chooseStatus;
+    }
+
+    public void setChooseStatus(String chooseStatus) {
+        this.chooseStatus = chooseStatus;
+    }
+
+    public String getAbitId() {
+        return abitId;
+    }
+
+    public void setAbitId(String abitId) {
+        this.abitId = abitId;
+    }
+
+    public String getFormId() {
+        return formId;
+    }
+
+    public void setFormId(String formId) {
+        this.formId = formId;
     }
 
     public String getId() {

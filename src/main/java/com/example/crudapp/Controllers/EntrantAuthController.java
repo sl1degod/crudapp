@@ -23,6 +23,11 @@ public class EntrantAuthController {
     @FXML
     private Label labelError;
 
+
+    @FXML
+    private Label labelReg;
+
+
     @FXML
     private AnchorPane rootPane;
 
@@ -43,11 +48,6 @@ public class EntrantAuthController {
     DbFunctions dbFunctions = new DbFunctions();
 
     @FXML
-    void backScreen() {
-        new Loader().openNewScene(rootPane, "/com/example/crudapp/views/entrant-start-window.fxml", "Добро пожаловать");
-    }
-
-    @FXML
     void initialize() {
         buttonBack.setOnAction(e -> {
             new Loader().openNewScene(rootPane, "/com/example/crudapp/views/start-window.fxml", "Абитуриент");
@@ -57,37 +57,39 @@ public class EntrantAuthController {
             validation();
         });
 
-
-
-
+        labelReg.setOnMouseClicked(e -> {
+            new Loader().openNewScene(rootPane, "/com/example/crudapp/views/registration-window.fxml", "Регистрация");
+        });
     }
 
     private void validation() {
         String login = textFieldLogin.getText();
-        String password= textFieldPassword.getText();
+        String password = textFieldPassword.getText();
         int codeError = dbFunctions.signIn(login, password);
         if (login.isEmpty()) {
-            labelError.setText("Логин пустой");
+            labelError.setText("Введите логин");
             checkCaptcha();
-        } else if(password.isEmpty()) {
-            labelError.setText("Пароль пустой");
+        } else if (password.isEmpty()) {
+            labelError.setText("Введите пароль");
             checkCaptcha();
-        } else if(codeError == 0) {
+        } else if (textFieldCaptcha.getText().isEmpty()) {
+            labelError.setText("Введите каптчу");
+            checkCaptcha();
+        } else if (codeError == 0) {
             labelError.setText("Не найден аккаунт");
             checkCaptcha();
-        } else if(codeError == 404) {
-            labelError.setText("Какая-то ошибка");
+        } else if (codeError == 404) {
+            labelError.setText("Введенные данные неверны");
+            checkCaptcha();
+        } else if (!textFieldCaptcha.getText().equals(captcha.getText())) {
+            labelError.setText("Введите каптчу повторно");
             checkCaptcha();
         } else {
             Singleton.getInstance().setLogin(textFieldLogin.getText());
             labelError.setText("");
             new Loader().openNewScene(rootPane, "/com/example/crudapp/views/main-entrant-window.fxml", "Главное меню");
-
         }
-
-
     }
-
 
 
     public void checkCaptcha() {
@@ -96,15 +98,15 @@ public class EntrantAuthController {
 
     public String generateCaptcha() {
         int[] num = new int[1];
-        int a = (int) Math.round(Math.random()*9);
-        String[] spec = new String[] {
+        int a = (int) Math.round(Math.random() * 9);
+        String[] spec = new String[]{
                 "!", "@", "#", "$"
         };
         String randSpec = String.valueOf((getRandomElement(spec)));
         StringBuilder captcha = new StringBuilder();
         Random r = new Random();
-        char z = (char)(r.nextInt(26)+'a');
-        char x = (char)(r.nextInt(26)+'a');
+        char z = (char) (r.nextInt(26) + 'a');
+        char x = (char) (r.nextInt(26) + 'a');
         String c = String.valueOf((getRandomElement(spec)));
 
         String[] word = new String[]{
@@ -113,7 +115,7 @@ public class EntrantAuthController {
 
         Random random = new Random();
         for (int i = 0; i < word.length - 1; i++) {
-            int index = random.nextInt(i+1, word.length);
+            int index = random.nextInt(i + 1, word.length);
             String temp = String.valueOf(word[i]);
             word[i] = word[index];
             word[index] = String.valueOf(temp);

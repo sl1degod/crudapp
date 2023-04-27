@@ -1,7 +1,7 @@
 module com.example.crudapp {
     requires javafx.controls;
     requires javafx.fxml;
-//    requires org.postgresql.jdbc;
+    requires org.postgresql.jdbc;
     requires java.sql;
 
 

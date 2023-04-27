@@ -54,29 +54,33 @@ public class WorkerAuthController {
 
     private void validation() {
         String login = textFieldLogin.getText();
-        String password= textFieldPassword.getText();
+        String password = textFieldPassword.getText();
         int codeError = dbFunctions.signInWorker(login, password);
         if (login.isEmpty()) {
             labelError.setText("Логин пустой");
             checkCaptcha();
-        } else if(password.isEmpty()) {
+        } else if (password.isEmpty()) {
             labelError.setText("Пароль пустой");
             checkCaptcha();
-        } else if(codeError == 0) {
+        } else if (textFieldCaptcha.getText().isEmpty()) {
+            labelError.setText("Введите каптчу");
+            checkCaptcha();
+        } else if (codeError == 0) {
             labelError.setText("Не найден аккаунт");
             checkCaptcha();
-        } else if(codeError == 404) {
+        } else if (codeError == 404) {
             labelError.setText("Какая-то ошибка");
+            checkCaptcha();
+        } else if (!textFieldCaptcha.getText().equals(captcha.getText())) {
+            labelError.setText("Введите каптчу");
             checkCaptcha();
         } else {
             labelError.setText("");
             new Loader().openNewScene(rootPane, "/com/example/crudapp/views/worker-main-window.fxml", "Главное меню");
-
         }
 
 
     }
-
 
 
     public void checkCaptcha() {
@@ -85,15 +89,15 @@ public class WorkerAuthController {
 
     public String generateCaptcha() {
         int[] num = new int[1];
-        int a = (int) Math.round(Math.random()*9);
-        String[] spec = new String[] {
+        int a = (int) Math.round(Math.random() * 9);
+        String[] spec = new String[]{
                 "!", "@", "#", "$"
         };
         String randSpec = String.valueOf((getRandomElement(spec)));
         StringBuilder captcha = new StringBuilder();
         Random r = new Random();
-        char z = (char)(r.nextInt(26)+'a');
-        char x = (char)(r.nextInt(26)+'a');
+        char z = (char) (r.nextInt(26) + 'a');
+        char x = (char) (r.nextInt(26) + 'a');
         String c = String.valueOf((getRandomElement(spec)));
 
         String[] word = new String[]{
@@ -102,7 +106,7 @@ public class WorkerAuthController {
 
         Random random = new Random();
         for (int i = 0; i < word.length - 1; i++) {
-            int index = random.nextInt(i+1, word.length);
+            int index = random.nextInt(i + 1, word.length);
             String temp = String.valueOf(word[i]);
             word[i] = word[index];
             word[index] = String.valueOf(temp);

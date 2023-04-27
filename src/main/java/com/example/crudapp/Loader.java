@@ -3,25 +3,34 @@ package com.example.crudapp;
 import com.example.crudapp.Models.SceneModel;
 import com.example.crudapp.Models.StageModel;
 import javafx.application.Application;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Group;
 import javafx.scene.Scene;
+import javafx.scene.chart.PieChart;
+import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.util.Objects;
 
 public class Loader extends Application {
+//    https://www.internet-technologies.ru/articles/60-besplatnyh-html5-i-css3-form-avtorizacii-dlya-sayta.html
     public static final String USERNAME = "admin";
     public static final String PASSWORD = "123";
 
     @Override
     public void start(Stage stage) throws IOException {
         StageModel.setMyStage(stage);
+        stage.getIcons().add(new Image(Objects.requireNonNull(Loader.class.getResourceAsStream("/img/icon.jpg"))));
         FXMLLoader fxmlLoader = new FXMLLoader(Loader.class.getResource("views/start-window.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         SceneModel.setMyScene(scene);
-        stage.setTitle("Способ входа");
+        stage.setScene(scene);
+        stage.show();
         stage.setScene(scene);
         stage.show();
     }

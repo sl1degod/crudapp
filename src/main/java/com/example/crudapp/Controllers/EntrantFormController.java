@@ -5,6 +5,7 @@ import java.util.ResourceBundle;
 
 import com.example.crudapp.DataBase.DbFunctions;
 import com.example.crudapp.Loader;
+import com.example.crudapp.Models.Entrant;
 import com.example.crudapp.Models.Singleton;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -17,13 +18,6 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 
 public class EntrantFormController {
-
-    @FXML
-    private ResourceBundle resources;
-
-    @FXML
-    private URL location;
-
     @FXML
     private ChoiceBox<String> choiceBoxFormEduc;
 
@@ -48,6 +42,8 @@ public class EntrantFormController {
     @FXML
     private Label labelpatronymic;
 
+    @FXML
+    private Label labelError;
 
     @FXML
     private ImageView image;
@@ -57,26 +53,39 @@ public class EntrantFormController {
 
     DbFunctions dbFunctions = new DbFunctions();
 
-
-
-
     @FXML
     void initialize() {
         setSpecs();
         setFormEduc();
         info();
+
         buttonBack.setOnAction(e -> {
-            new Loader().openNewScene(rootPane, "/com/example/crudapp/views/main-entrant-window.fxml", "123");
+            new Loader().openNewScene(rootPane, "/com/example/crudapp/views/main-entrant-window.fxml", "Основное окно");
         });
 
         buttonSave.setOnAction(e -> {
-            String abitId = Singleton.getInstance().getId();
-            String spec = choiceBoxSpec.getValue();
-            String formEduc = choiceBoxFormEduc.getValue();
-            dbFunctions.createForm(abitId, spec, formEduc);
+            validation();
         });
+    }
 
+    private void validation() {
+        labelError.setText("");
+        String abitId = Singleton.getInstance().getId();
+        String spec = choiceBoxSpec.getValue();
+        String formEduc = choiceBoxFormEduc.getValue();
+        if (choiceBoxSpec.getValue().equals("Выберите специальность")) {
+            labelError.setText("Выберите специальность");
+        } else if (choiceBoxFormEduc.getValue().equals("Выберите форму обучения")) {
+            labelError.setText("Выберите форму обучения");
+        } else {
+            String checkForm = dbFunctions.createForm(abitId, spec, formEduc);
+            labelError.setText(checkForm);
+//            if (checkForm.isEmpty()) {
+//                dbFunctions.createForm(abitId, spec, formEduc);
+//                labelError.setText("Анкета создана");
+//            }
 
+        }
     }
 
     private void setSpecs() {
