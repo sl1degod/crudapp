@@ -18,7 +18,7 @@ import java.io.IOException;
 import java.util.Objects;
 
 public class Loader extends Application {
-//    https://www.internet-technologies.ru/articles/60-besplatnyh-html5-i-css3-form-avtorizacii-dlya-sayta.html
+//    by sl1degod
     public static final String USERNAME = "admin";
     public static final String PASSWORD = "123";
 
